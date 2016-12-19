@@ -11,6 +11,9 @@
     "angular2"
   ],
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dking3876/bf-text.git/issues"
+  },
   "main": "./index.js",
   "dependencies": {
     "@angular/common": "^2.2.0",
