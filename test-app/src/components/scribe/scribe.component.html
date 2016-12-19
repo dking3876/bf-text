@@ -1,0 +1,172 @@
+
+<bf-topbar (menuClick)="menuClick()">
+<bf-topbar-notifications>
+<md-icon style="color:white; font-size:15px;">mail</md-icon>&nbsp;&nbsp;
+<md-icon style="color:white; font-size:15px;">alarm</md-icon>&nbsp;&nbsp;
+<md-icon style="color:white; font-size:15px;">search</md-icon>
+
+</bf-topbar-notifications>
+<bf-topbar-identity>
+  <div style="position:relative; top:5px; display:inline-block">
+  <img style="width:30px; border-radius:15px;" src="https://avatars3.githubusercontent.com/u/3968639?v=3&s=460" alt="..."/>
+</div>
+  Stew Snow&nbsp;<md-icon style="color:white; font-size:15px;">keyboard_arrow_down</md-icon>&nbsp;
+  <md-icon style="color:white; font-size:15px;">question_answer</md-icon>
+</bf-topbar-identity>
+</bf-topbar>
+
+<bf-sidenav>
+<bf-sidenav-menu>
+
+<bf-menu MenuTitle="Main">
+  <bf-menu-item Caption="Dashboardx" Icon="dvr">
+    </bf-menu-item>
+  <bf-menu-item Caption="Multi Purpose" Icon="cast"></bf-menu-item>
+  <bf-menu-item Caption="Layouts"  Icon="developer_board"></bf-menu-item>
+</bf-menu>
+
+<bf-menu MenuTitle="Applications">
+  <bf-menu-item Caption="Calendar" Icon="looks_one"></bf-menu-item>
+  <bf-menu-item Caption="Mailbox" Icon="email"></bf-menu-item>
+  <bf-menu-item Caption="Chat API"  Icon="thumb_up"></bf-menu-item>
+  <bf-menu-item Caption="Widgets"  Icon="work"></bf-menu-item>
+</bf-menu>
+
+</bf-sidenav-menu>
+
+<bf-sidenav-content>
+
+  <bf-page-box Title="Articles Dashboard">
+      <bf-page-box-menu>
+
+
+      </bf-page-box-menu>
+
+      <bf-page-box-content>
+
+        <bf-layout-dashboard>
+
+          <bf-layout-dashboard-item>
+            <bf-card title="Non Padded Card" no-padding>
+              <bf-card-content>
+
+                <bf-logo></bf-logo>
+
+              </bf-card-content>
+              <bf-card-actions>
+                <button md-button>VIEW MORE ARTICLES</button>
+              </bf-card-actions>
+            </bf-card>
+          </bf-layout-dashboard-item>
+
+          <bf-layout-dashboard-item>
+            <bf-card title="Padded Card {default}">
+              <bf-card-content>
+
+                <bf-logo></bf-logo>
+
+              </bf-card-content>
+              <bf-card-actions>
+                <button md-button>VIEW MORE ARTICLES</button>
+              </bf-card-actions>
+            </bf-card>
+          </bf-layout-dashboard-item>
+
+
+          <bf-layout-dashboard-item>
+            <bf-card title="Initial Drafts" no-padding>
+              <bf-card-notifications><bf-badge>12 articles</bf-badge></bf-card-notifications>
+            <bf-card-content>
+              <md-list>
+                <ng-container  *ngFor="let article of draftarticles">
+                  <bf-picture-row [imageUrl]="article.main_imageurl" (click)="onArticleClick(article)">
+                    <bf-picture-row-title>{{article.title}}</bf-picture-row-title>
+                    <bf-picture-row-description>{{article.description}} --  {{article.date |  date:"yyyy/MM/dd HH:mm:ss"}} </bf-picture-row-description>
+                    <bf-picture-row-extrainfo>3hrs</bf-picture-row-extrainfo>
+                  </bf-picture-row>
+                  <md-divider></md-divider>
+                </ng-container>
+              </md-list>
+            </bf-card-content>
+            <bf-card-actions>
+              <button md-button (click)="ShowMore()">VIEW MORE ARTICLES</button>
+            </bf-card-actions>
+            </bf-card>
+          </bf-layout-dashboard-item>
+
+          <bf-layout-dashboard-item>
+            <bf-card title="Editing" no-padding>
+            <bf-card-notifications><bf-badge>12 articles</bf-badge></bf-card-notifications>
+          <bf-card-content>
+            <md-list>
+              <ng-container  *ngFor="let article of draftarticles">
+                <bf-picture-row [imageUrl]="article.main_imageurl" (click)="onArticleClick(article)">
+                  <bf-picture-row-title>{{article.title}}</bf-picture-row-title>
+                  <bf-picture-row-description>{{article.description}} --  {{article.date |  date:"yyyy/MM/dd HH:mm:ss"}} </bf-picture-row-description>
+                  <bf-picture-row-extrainfo>3hrs</bf-picture-row-extrainfo>
+                </bf-picture-row>
+                <md-divider></md-divider>
+              </ng-container>
+            </md-list>
+          </bf-card-content>
+          <bf-card-actions>
+            <button md-button>VIEW MORE ARTICLES</button>
+          </bf-card-actions>
+          </bf-card>
+          </bf-layout-dashboard-item>
+
+          <bf-layout-dashboard-item>
+              <bf-card title="Final Drafts"  no-padding>
+              <bf-card-notifications><bf-badge>12 articles</bf-badge></bf-card-notifications>
+            <bf-card-content>
+              <md-list>
+                <ng-container  *ngFor="let article of draftarticles">
+                  <bf-picture-row [imageUrl]="article.main_imageurl" (click)="onArticleClick(article)">
+                    <bf-picture-row-title>{{article.title}}</bf-picture-row-title>
+                    <bf-picture-row-description>{{article.description}} --  {{article.date |  date:"yyyy/MM/dd HH:mm:ss"}} </bf-picture-row-description>
+                    <bf-picture-row-extrainfo>3hrs</bf-picture-row-extrainfo>
+                  </bf-picture-row>
+                  <md-divider></md-divider>
+                </ng-container>
+              </md-list>
+            </bf-card-content>
+            <bf-card-actions>
+              <button md-button (click)="ShowMore()">VIEW MORE ARTICLES</button>
+            </bf-card-actions>
+            </bf-card>
+          </bf-layout-dashboard-item>
+
+          <bf-layout-dashboard-item>
+            <bf-card title="For Approval"  no-padding>
+            <bf-card-notifications><bf-badge>12 articles</bf-badge></bf-card-notifications>
+          <bf-card-content>
+            <md-list>
+              <ng-container  *ngFor="let article of draftarticles">
+                <bf-picture-row [imageUrl]="article.main_imageurl" (click)="onArticleClick(article)">
+                  <bf-picture-row-title>{{article.title}}</bf-picture-row-title>
+                  <bf-picture-row-description>{{article.description}} --  {{article.date |  date:"yyyy/MM/dd HH:mm:ss"}} </bf-picture-row-description>
+                  <bf-picture-row-extrainfo>3hrs</bf-picture-row-extrainfo>
+                </bf-picture-row>
+                <md-divider></md-divider>
+              </ng-container>
+            </md-list>
+          </bf-card-content>
+          <bf-card-actions>
+            <button md-button>VIEW MORE ARTICLES</button>
+          </bf-card-actions>
+          </bf-card>
+          </bf-layout-dashboard-item>
+        </bf-layout-dashboard>
+
+
+
+
+
+      </bf-page-box-content>
+  </bf-page-box>
+
+
+
+</bf-sidenav-content>
+
+</bf-sidenav>
