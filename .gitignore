@@ -2,7 +2,7 @@
 node_modules/*
 npm-debug.log
 **/node_modules/*
-
+dist
 **/typings/*
 
 # JetBrains
@@ -25,3 +25,7 @@ Desktop.ini
 *.js
 *.map
 *.d.ts
+
+
+!scripts/*
+!gulpfile.js
