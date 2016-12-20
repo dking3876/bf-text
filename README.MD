@@ -2,4 +2,5 @@
 npm install derykediter
 
 #Usage
-<bf-input text value="somevalue"></bf-input>
+
+`<bf-input text value="somevalue"></bf-input>`
