@@ -1,6 +1,8 @@
 const gulp = require('gulp');
 const gulpCopy = require('gulp-copy');
 var run = require('gulp-run');
+var argv = require('yargs').argv;
+var version = (argv.version === undefined) ? 'patch' : argv.version;
 var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 
@@ -15,7 +17,7 @@ gulp.task(':build-dist', ()=>{
     .pipe(gulp.dest('build'));
 })
 gulp.task(':npm-version',[':inline-resources'], ()=>{
-    return run('npm version patch').exec();
+    return run('npm version '+version).exec();
     //eval('npm publish dist/src');
 })
 gulp.task(':cp-package',[':npm-version'], ()=>{
