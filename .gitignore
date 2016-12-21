@@ -2,7 +2,8 @@
 node_modules/*
 npm-debug.log
 **/node_modules/*
-dist
+build
+build/package.json
 **/typings/*
 
 # JetBrains
