@@ -31,7 +31,7 @@ gulp.task('default', ['build']);
 gulp.task('build', [':build-dist', ':inline-resources']);
 
 gulp.task('publish', [':build-dist', ':inline-resources', ':npm-version', ':cp-package'], ()=>{
-    return run('npm publish build')
+    return run('npm publish build/')
 })
 
 gulp.task('typescript-compile', [':compile']);
