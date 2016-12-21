@@ -10,9 +10,6 @@ const inlineResources = require('./scripts/inline');
 
 //first build the project and copy to dist folder
 gulp.task(':build-dist', ()=>{
-    gulp
-    .src('package.json')
-    .pipe(gulpCopy('build/'));
     //.pipe(gulp.dest('build'));
 
     return gulp
@@ -23,6 +20,9 @@ gulp.task(':build-dist', ()=>{
 gulp.task(':publish',[':inline-resources'], ()=>{
     return run('npm version patch').exec();
     //eval('npm publish dist/src');
+        gulp
+    .src('package.json')
+    .pipe(gulpCopy('build/'));
 })
 
 gulp.task(":compile", function () {
