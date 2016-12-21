@@ -12,14 +12,13 @@ const inlineResources = require('./scripts/inline');
 gulp.task(':build-dist', ()=>{
     return gulp
     .src('src/**/*', {base: './src'})
-    //.pipe(gulpCopy('dist/'));
     .pipe(gulp.dest('build'));
 })
 gulp.task(':npm-version',[':inline-resources'], ()=>{
     return run('npm version patch').exec();
     //eval('npm publish dist/src');
 })
-gulp.task(':cp-package', ()=>{
+gulp.task(':cp-package',[':npm-version'], ()=>{
     gulp
     .src('package.json')
     .pipe(gulpCopy('build/'));
