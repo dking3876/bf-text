@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const gulpCopy = require('gulp-copy');
 var run = require('gulp-run');
 var argv = require('yargs').argv;
-var version = (argv.versionType === undefined) ? 'patch' : argv.version;
+var version = (argv.versionType === undefined) ? 'patch' : argv.versionType;
 var ts = require("gulp-typescript");
 var tsProject = ts.createProject("tsconfig.json");
 
