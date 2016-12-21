@@ -20,7 +20,7 @@ gulp.task(':npm-version',[':inline-resources'], ()=>{
 })
 gulp.task(':cp-package',[':npm-version'], ()=>{
     gulp
-    .src('package.json')
+    .src(['package.json', 'README.MD'])
     .pipe(gulpCopy('build/'));
 })
 //now inline all the resources
