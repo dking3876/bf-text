@@ -23,6 +23,9 @@ gulp.task(':cp-package',[':npm-version'], ()=>{
     .src(['package.json', 'README.MD'])
     .pipe(gulpCopy('build/'));
 })
+gulp.task(':publish', [':cp-package'], ()=>{
+    return run('npm publish build/')
+})
 //now inline all the resources
 gulp.task(':inline-resources',[':build-dist'], () => inlineResources(DIST_COMPONENTS_ROOT));
 
@@ -30,8 +33,6 @@ gulp.task('default', ['build']);
 
 gulp.task('build', [':build-dist', ':inline-resources']);
 
-gulp.task('publish', [':build-dist', ':inline-resources', ':npm-version', ':cp-package'], ()=>{
-    return run('npm publish build/')
-})
+gulp.task('publish', [':build-dist', ':inline-resources', ':npm-version', ':cp-package', ':publish'])
 
 gulp.task('typescript-compile', [':compile']);
