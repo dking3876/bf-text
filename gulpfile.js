@@ -24,7 +24,7 @@ gulp.task(':cp-package',[':npm-version'], ()=>{
     .pipe(gulpCopy('build/'));
 })
 gulp.task(':publish', [':cp-package'], ()=>{
-    return run('npm publish build/')
+    return run('npm publish build/').exec();
 })
 //now inline all the resources
 gulp.task(':inline-resources',[':build-dist'], () => inlineResources(DIST_COMPONENTS_ROOT));
