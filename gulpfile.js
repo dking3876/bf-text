@@ -20,9 +20,6 @@ gulp.task(':build-dist', ()=>{
 gulp.task(':publish',[':inline-resources'], ()=>{
     return run('npm version patch').exec();
     //eval('npm publish dist/src');
-        gulp
-    .src('package.json')
-    .pipe(gulpCopy('build/'));
 })
 
 gulp.task(":compile", function () {
@@ -38,6 +35,10 @@ gulp.task('default', [':inline-resources']);
 
 gulp.task('build', [':build-dist']);
 
-gulp.task('publish', [':build-dist', ':inline-resources', ':publish'])
+gulp.task('publish', [':build-dist', ':inline-resources', ':publish'], ()=>{
+    gulp
+    .src('package.json')
+    .pipe(gulpCopy('build/'));
+})
 
 gulp.task('typescript-compile', [':compile']);
