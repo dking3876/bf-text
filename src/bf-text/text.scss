@@ -1,3 +1,22 @@
-span:hover{
-    outline:1px solid green;
+.bf-textContainer{
+    display:flex;
+    
+    label{
+        line-height: 24px;
+        text-align:left;
+        flex-basis:25%;
+        padding-right:25px;
+    }
+    span{
+        line-height: 24px;
+    }
+    input{
+        line-height:24px;
+        padding:0px 0px;
+    }
+    md-icon{
+        font-size: .85em;
+        cursor: pointer;
+        color: red;
+    }
 }

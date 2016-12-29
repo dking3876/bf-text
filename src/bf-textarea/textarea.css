@@ -1,0 +1,26 @@
+:host {
+  position: relative; }
+  :host .bf-textareaContainer {
+    display: flex;
+    line-height: 24px; }
+    :host .bf-textareaContainer label {
+      line-height: 24px;
+      text-align: left;
+      flex-basis: 25%;
+      padding-right: 25px; }
+    :host .bf-textareaContainer span {
+      line-height: 24px; }
+    :host .bf-textareaContainer p {
+      margin: 0px 0px; }
+    :host .bf-textareaContainer .textAreaWrapper {
+      position: relative; }
+    :host .bf-textareaContainer textarea {
+      position: fixed;
+      width: 50%;
+      min-width: 250px;
+      height: 150px;
+      z-index: 999; }
+    :host .bf-textareaContainer md-icon {
+      font-size: .85em;
+      cursor: pointer;
+      color: red; }

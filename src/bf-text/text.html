@@ -1,2 +1,5 @@
-<input type="text"  name="value" value="{{value}}" [hidden]="!isEditing" (blur)="finishEditing($event)">
-<span [hidden]="isEditing" (click)="startEditing()">{{value}} Edit</span>
+<div class="bf-textContainer">
+    <label>{{fieldName}}</label>
+    <input type="text"  name="value" value="{{value}}" [hidden]="!isEditing" (blur)="finishEditing($event)" (keyup)="finishEditing($event)">
+    <span [hidden]="isEditing" >{{value}}<md-icon (click)="startEditing()">create</md-icon></span>
+</div>

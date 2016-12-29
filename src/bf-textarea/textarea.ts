@@ -1,14 +1,19 @@
-import { Component, Input, Output, HostBinding, ChangeDetectionStrategy, NgModule, ModuleWithProviders, EventEmitter, ElementRef} from '@angular/core';
+import { Component, Input, Output, HostBinding, ChangeDetectionStrategy, NgModule, ModuleWithProviders, EventEmitter, ElementRef, ViewChild, OnInit} from '@angular/core';
 import {CommonModule } from '@angular/common';
+import { MdIconModule, MdIconRegistry } from '@angular/material';
+import { BfModalModule, BfModal } from '../bf-modal/index';
 
 @Component({
     moduleId: String(module.id),
     selector: 'bf-input[textarea]',
     templateUrl: 'textarea.html',
-    styleUrls: ['textarea.scss']
+    styleUrls: ['textarea.css']
 })
-export class BfTextarea{
-private _value:any;
+export class BfTextarea implements OnInit{
+    @ViewChild(BfModal)
+    BfModal : BfModal;
+
+    private _value:any;
     @Input() 
     get value(){
         return this._value;
@@ -33,37 +38,46 @@ private _value:any;
     set isEditing(b:boolean){
         this._edit = b;
     }
+    public Dom:any;
     @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(public element: ElementRef){
-        console.log(this.element)
+        
+    }
+    ngOnInit(){
+        this.Dom = {
+            host: this.element,
+            parent: this.element.nativeElement.childNodes[0],
+            textArea: this.element.nativeElement.childNodes[0].childNodes[5].childNodes[1]
+        }
     }
     valueModify(){
         this.valueChange.emit(this.value)
     }
+    check(){
+        this.BfModal.show();
+    }
     startEditing(){
-        console.log("clicked");
+        console.log("Editing");
         this.isEditing = true;
-        console.log(this.element.nativeElement.childNodes[0])
-        setTimeout(()=> this.element.nativeElement.childNodes[0].focus(), 250);
+        setTimeout(()=> this.Dom.textArea.focus(), 250);
     }
     finishEditing($event:any){
-        console.log($event.target.value);
         this.isEditing = false;
         this.value = $event.target.value;
         this.valueModify();
     }
 }
 @NgModule({
-    imports: [],
+    imports: [BfModalModule, MdIconModule],
     exports: [BfTextarea],
-    declarations: [BfTextarea]
+    declarations: [BfTextarea ]
 })
 export class BfTextareaModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: BfTextareaModule,
-            providers: []
+            providers: [MdIconRegistry]
         }
     }
 }
