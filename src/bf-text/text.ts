@@ -1,13 +1,15 @@
-import { Component, Input, Output, HostBinding, ChangeDetectionStrategy, NgModule, ModuleWithProviders, EventEmitter, ElementRef} from '@angular/core';
+import { Component, Input, Output, HostBinding, ChangeDetectionStrategy, NgModule, ModuleWithProviders, EventEmitter, ElementRef, OnInit} from '@angular/core';
 import {CommonModule } from '@angular/common';
+
+import { MdIconModule, MdIconRegistry } from '@angular/material';
 
 @Component({
     moduleId: String(module.id),
     selector: 'bf-input[text]',
     templateUrl: 'text.html',
-    styleUrls: ['text.scss']
+    styleUrls: ['text.css']
 })
-export class BfText{
+export class BfText implements OnInit{
     private _value:any;
     @Input() 
     get value(){
@@ -33,22 +35,37 @@ export class BfText{
     set isEditing(b:boolean){
         this._edit = b;
     }
+    public Dom:any;
     @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(public element: ElementRef){
-        console.log(this.element)
+    }
+    ngOnInit(){
+        this.Dom = {
+            host: this.element,
+            parent: this.element.nativeElement,
+            label: this.element.nativeElement.childNodes[0].childNodes[1],
+            input: this.element.nativeElement.childNodes[0].childNodes[3]
+        }
     }
     valueModify(){
-        this.valueChange.emit(this.value)
+        this.valueChange.emit({
+            value: this.value,
+            fieldName: this.fieldName
+        })
     }
     startEditing(){
-        console.log("clicked");
+        console.log("Editing");
         this.isEditing = true;
-        console.log(this.element.nativeElement.childNodes[0])
-        setTimeout(()=> this.element.nativeElement.childNodes[0].focus(), 250);
+        setTimeout(()=> this.Dom['input'].focus(), 250);
     }
     finishEditing($event:any){
-        console.log($event.target.value);
+        if($event.type === "keyup"){
+            let key = $event.keyCode;
+            if(key !== 13 && key !== 9 ){ //EEnter or Tab triggers finish
+                return;
+            }
+        }
         this.isEditing = false;
         this.value = $event.target.value;
         this.valueModify();
@@ -57,7 +74,7 @@ export class BfText{
 }
 
 @NgModule({
-    imports: [],
+    imports: [MdIconModule],
     exports: [BfText],
     declarations: [BfText]
 })
@@ -65,7 +82,7 @@ export class BfTextModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: BfTextModule,
-            providers: []
+            providers: [MdIconRegistry]
         }
     }
 }

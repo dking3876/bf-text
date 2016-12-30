@@ -1,0 +1,7 @@
+<div class="bf-textareaContainer">
+    <label>Some Label</label>
+    <span [hidden]="isEditing" >{{value}} <md-icon (click)="startEditing()">create</md-icon></span>
+    <div class="textAreaWrapper">
+        <textarea name="someName" [hidden]="!isEditing" (blur)="finishEditing($event)">{{value}}</textarea>
+    </div>
+</div>

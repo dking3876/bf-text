@@ -7,7 +7,7 @@ import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
-import { EditorModule } from './../../../';
+import { EditorModule } from 'derykediter';
 
 @NgModule({
   declarations: [

@@ -1,0 +1,23 @@
+<div class="inputFields" *ngIf="_validConfig">
+    <label for="dk-file" class="uploadButton" [style]="styles">{{config.label}} <md-icon>file_upload</md-icon></label>
+    <input type="file" name="dk-file" id="dk-file" [attr.multiple]="multiple" (change)="uploadFiles($event)"/>
+    <div class="uploaded" id="dk-uploadedFiles">
+        <ul>
+
+            <li *ngFor="let file of uploaded" class="singleItem" id="uploadedItem-{{file.index}}" >
+                <md-icon (click)="closeBox($event)" class="closeUpload">close</md-icon>
+                <!--Loader-->
+                <div [hidden]="!file.loading" class="progress"><span class="progPercent"></span><md-icon>autorenew</md-icon></div>
+                <div [hidden]="file.loading" class="imgContainer">
+                    <!-- If type[0] === "image" -->
+                    <img [src]=file.src *ngIf="file.type[0] == 'image'" />
+                    <!-- else find icon for file type -->
+                    <i [class]=file.class *ngIf="file.type[0] != 'image'"></i>
+                </div>
+                <span class="fileName">{{file.name}}</span>
+            </li>
+            
+        </ul>
+
+    </div>
+</div> 

@@ -2,9 +2,9 @@
 node_modules/*
 npm-debug.log
 **/node_modules/*
-
+.vscode
 typings/
-
+scripts
 # JetBrains
 .idea
 .project
@@ -24,6 +24,8 @@ Desktop.ini
 # Ignored transpiled files
 *.ts
 !*.d.ts
+build/**/*.ts
+!build/**/*.d.ts
 
 # Ignore the other root config files that we don't need in the package
 appveyor.yml

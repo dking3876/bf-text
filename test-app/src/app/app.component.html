@@ -1,2 +1,7 @@
-<p>Hello world</p>
-<bf-input text value="My" (valueChange)="registerValue($event)"></bf-input>
+<p>{{someValue}}</p>
+
+<bf-input textarea value="some cool stuff" fieldName="text area label"></bf-input><br/>
+
+<bf-input text value="{{someValue}}" fieldName="A field Value Name" (valueChange)="registerValue($event)"></bf-input><br/>
+
+<bf-input file [config]=uploadConfig (fileUploaded)="singleFile($event)" (uploadCompleted)="allFiles($event)"></bf-input>
