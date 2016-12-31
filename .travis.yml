@@ -4,5 +4,5 @@ node_js:
 - '4.2.1'
 before_script:
   - npm install -g gulp
-  -npm install glob
+  - npm install glob
 script: gulp build
