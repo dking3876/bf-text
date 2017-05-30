@@ -24,7 +24,7 @@
     "@angular/forms": "^4.0.1",
     "@angular/http": "^4.0.1",
     "@angular/material": "^2.0.0-alpha.10",
-    "@angular/platform-browser": "^2.2.0",
+    "@angular/platform-browser": "^4.0.0",
     "angular2-http-file-upload": "^1.0.5"
   },
   "devDependencies": {
