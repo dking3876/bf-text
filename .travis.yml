@@ -1,8 +1,16 @@
 language: node_js
 sudo: false
 node_js:
-- '4.2.1'
+- 4.2.1
 before_script:
-  - npm install -g gulp
-  - npm install glob
+- npm install -g gulp
+- npm install glob
 script: gulp build
+deploy:
+  provider: npm
+  email: dking3876@msn.com
+  api_key:
+    secure: mz2etX1o4suL/3CJhO2tauOHdF4LAGKb1ylhdgJyLY61cCbv4brO06x8e+lj0CyGWjxR1cm769aUSd9Rbq4381hyPHix0uaoBnNX4x1Pkw/lxDP+EQ06Rh3fES9KadfeLGyzKmzAn2hnFkxtV3BrSixAjP8iIBea1CztvVyzmgb3YL8qoO/hbFB+uJu0aJiB0H9liLIfvQHfjlTroVBt+SVoXxWtxfJsT+Nq/0lO3g1uK6sXJS6p+XYwaXDlQ/FCMGFu5wf5e9tEO7xXIdIutABLtc3QpyKMsZh2NTPJS7XgyS8yifSudZ/O+xOSy2kV67BSFkH/WwP6k4RR8GyuvdYKoQPFhROtk4QfmBwedjk0md0BvSJTShTZsl3DYPlUdV6d2+0bJfS/2GzzJeihfoJ0VSqY3ADmv1Rb+ePqV2tulidDJkgInflR6VtOHYRxP4t4fAHO/WKGjbIrnvKKqS9tSxH07yR/MZG6M5/K7RKbRDDYkNodsXPj7u5yUt9o5/LScOqB7cLMZc2JXfebVZYFjRT44O7G0YgAgB9wL2hDrpHoCTOspOTDbCgC64vVRX5IG7hG9DHkZsyricIOrFa4rF8qaoYn45KA9L6o6CqOc5DfldKYPBvCbPC/HkPla5TQ+avzxTdmsoZApdyn+rHlF9WFSrxS1BvBzvgjvko=
+  on:
+    repo: dking3876/bf-text
+    branch: automatic
